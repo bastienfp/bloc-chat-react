@@ -15,6 +15,7 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  // Render RoomList
   render() {
     return (
       <div className="App">
@@ -22,7 +23,6 @@ class App extends Component {
           <h1 className="App-title">Bloc Chat React</h1>
         </header>
         <section>
-        // Render RoomList
         <RoomList
           firebase={firebase}
         />

@@ -32,14 +32,14 @@ class RoomList extends Component {
       name: this.state.newRoomName
     });
   }
-
+//Create a row for each room in the database
+//User input to create a new room in the database and render it
   render() {
     return(
       <table id="room-list">
         <colgroup>
           <col id="room-name"/>
           </colgroup>
-          //Create a row for each room in the database
           <tbody>
             {
               this.state.rooms.map( (room, index) =>
@@ -50,7 +50,6 @@ class RoomList extends Component {
             }
             <tr>
               <td>
-                //User input to create a new room in the database and render it
                 <form>
                   <input type="text" name="name" placeholder="New room name" onChange={ (e) => this.handleChange(e) } />
                   <button onClick={ (e) => this.createRoom(e)}>Create</button>
