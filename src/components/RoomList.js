@@ -27,10 +27,13 @@ class RoomList extends Component {
   }
 
   //Create the new room in Firebase
+  //Prevent refresh
+  //Reset newRoomName
   createRoom(event) {
-    this.roomsRef.push({
-      name: this.state.newRoomName
-    });
+    event.preventDefault();
+    if (!this.state.newRoomName) { return }
+    this.roomsRef.push({ name: this.state.newRoomName });
+    this.setState({ newRoomName: '' });
   }
 //Create a row for each room in the database
 //User input to create a new room in the database and render it
@@ -50,9 +53,9 @@ class RoomList extends Component {
             }
             <tr>
               <td>
-                <form>
-                  <input type="text" name="name" placeholder="New room name" onChange={ (e) => this.handleChange(e) } />
-                  <button onClick={ (e) => this.createRoom(e)}>Create</button>
+                <form onSubmit={ (e) => this.createRoom(e)}>
+                  <input type="text" name="name" placeholder="New room name" value={this.state.newRoomName} onChange={ (e) => this.handleChange(e) } />
+                  <input type="submit" value="Create" />
                 </form>
               </td>
             </tr>
