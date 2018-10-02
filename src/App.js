@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import RoomList from './components/RoomList.js';
 import MessageList from './components/MessageList.js';
+import User from './components/User.js';
 import * as firebase from 'firebase';
 
 // Initialize Firebase
@@ -21,7 +22,7 @@ class App extends Component {
 
     this.state = {
       activeRoomName: 'room1',
-      activeRoomId: '1'
+      activeRoomId: 1
     };
   }
 
