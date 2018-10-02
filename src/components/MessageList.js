@@ -33,6 +33,7 @@ class MessageList extends Component {
           <tr>
             <th>{this.props.activeRoomName}</th>
           </tr>
+
         </thead>
           {
             this.state.messages.filter( message => message.roomId === this.props.activeRoomId ).map( (message, index) =>

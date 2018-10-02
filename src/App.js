@@ -22,7 +22,9 @@ class App extends Component {
 
     this.state = {
       activeRoomName: 'room1',
-      activeRoomId: 1
+      activeRoomId: 1,
+      username: 'Guest',
+      isLoggedIn: false
     };
   }
 
@@ -32,7 +34,25 @@ class App extends Component {
       activeRoomName: newActiveRoomName
     });
   }
-  // Render RoomList
+
+  setUser = (user) => {
+    const isLoggedIn = this.state.isLoggedIn;
+    if ( isLoggedIn === true) {
+      this.setState({
+        isLoggedIn: false,
+        username: 'Guest'
+      });
+    } else {
+      this.setState({
+        isLoggedIn: true,
+        username: user.displayName
+      });
+    }
+  }
+
+  //Render RoomList
+  //Render MessageList
+  //Render User
   render() {
     return (
       <div className="app">
@@ -49,6 +69,11 @@ class App extends Component {
           />
         </sidebar>
         <section className="messageList">
+          <User
+            firebase={firebase}
+            setUser={this.setUser}
+            username={this.state.username}
+          />
           <MessageList
             firebase={firebase}
             activeRoomName={this.state.activeRoomName}
