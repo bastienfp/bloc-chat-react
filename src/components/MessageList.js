@@ -51,12 +51,12 @@ class MessageList extends Component {
         </thead>
           {
             this.state.messages.filter( message => message.roomId === this.props.activeRoomId ).map( (message, index) =>
-            <tbody>
-              <tr key={index}>
+            <tbody key={message.sentAt}>
+              <tr key={message.sentAt}>
                 <td className="username">{message.username}</td>
                 <td className="timestamp">{this.props.formatTime(message.sentAt)}</td>
               </tr>
-              <tr className="message" key={index}>
+              <tr className="message" key={message.key}>
                 <td>{message.content}</td>
               </tr>
             </tbody>

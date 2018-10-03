@@ -24,6 +24,7 @@ class App extends Component {
       activeRoomName: '',
       activeRoomId: '',
       username: 'Guest',
+      currentUser: '',
       isLoggedIn: false
     };
   }
@@ -37,6 +38,7 @@ class App extends Component {
 
   //Set username based on login or logout events from User component
   setUser = (user) => {
+    this.setState({currentUser: user});
     const isLoggedIn = this.state.isLoggedIn;
     if ( isLoggedIn === true) {
       this.setState({
@@ -88,6 +90,7 @@ class App extends Component {
             firebase={firebase}
             setUser={this.setUser}
             username={this.state.username}
+            currentUser={this.state.currentUser}
           />
           <MessageList
             firebase={firebase}
